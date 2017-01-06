@@ -12,6 +12,7 @@
 #define BITS_LED N_LEDS*3
 #define TASTER 4
 #define WAIT 250000
+#define AUS_TASTER 20
 
 unsigned int r = 255;
 unsigned int g = 0;
@@ -19,18 +20,31 @@ unsigned int b = 255;
 unsigned int counter = 0;
 int pressed = 0;
 
-void herunterfahren()
+void herunterfahren(void)
 {
- if(digitalRead(TASTER) == 0)
+ if(digitalRead(AUS_TASTER) == 0)
 {
- int i;
+ int i,aus_counter;
  for(i = 0; i < 11; i++)
  {
-  if(digitalRead(TASTER) == 0)
+  if(digitalRead(AUS_TASTER) == 0)
   {
    sleep(1);
+   printf("AUS: %d,\n",i);
    if(i == 10)
+   {
+    char buffer[BITS_LED] = {0};
+    memset(buffer, 0, sizeof(buffer));
+    wiringPiSPIDataRW(0, buffer, sizeof(buffer));
+    usleep(1000);
+    memset(buffer, 0, sizeof(buffer));
+    wiringPiSPIDataRW(1, buffer, sizeof(buffer));
+    usleep(1000);
+    aus_counter = 1;
+    wait(1);
+    if(aus_counter == 1)
     system("sudo shutdown -h now");
+    }
   }
   else
    break;
@@ -126,7 +140,7 @@ int i;
 
 void interrupt_0(void)
 {
-  if(pressed == 0 && digitalRead(TASTER) == 1)
+  if(pressed == 0 && digitalRead(TASTER) == 0)
   {
     pressed = 1;
     wait(0.2);
@@ -153,8 +167,8 @@ int main()
       fprintf(stderr, "Error setting up SPI 1\n");
       return -ENOTTY;
    }
-   wiringPiISR (TASTER, INT_EDGE_RISING, interrupt_0) ;
-
+   wiringPiISR (TASTER, INT_EDGE_FALLING, interrupt_0) ;
+   wiringPiISR(AUS_TASTER, INT_EDGE_FALLING, herunterfahren);
    for(;;)
    {
     if(counter==0)
