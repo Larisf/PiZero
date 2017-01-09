@@ -1,3 +1,5 @@
+#include "main.h"
+
 int main()
 {
    char buffer[BITS_LED] = {0};

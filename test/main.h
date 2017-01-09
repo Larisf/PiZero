@@ -6,8 +6,12 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <time.h>
-#include "wiringPi.h"
-#include "wiringPiSPI.h"
+
 #include "led.h"
 #include "switch.h"
+
+#include "wiringPi.h"
+#include "wiringPiSPI.h"
+
+
 #endif

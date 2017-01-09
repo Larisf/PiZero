@@ -1,4 +1,5 @@
-void herunterfahren(void)
+#include "switch.h"
+herunterfahren(void)
 {
  if(digitalRead(AUS_TASTER) == 0)
 {

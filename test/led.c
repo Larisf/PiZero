@@ -1,3 +1,5 @@
+#include "led.h"
+
 void lauflicht(char *buffer, int size)
 {
    int x,y;

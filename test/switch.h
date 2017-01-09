@@ -1,3 +1,5 @@
+#ifndef SWITCH_H_
+#define SWITCH_H_
 #define N_LEDS 8
 #define BITS_LED N_LEDS*3
 #define TASTER 4
