@@ -1,5 +1,12 @@
 #include "switch.h"
-herunterfahren(void)
+
+unsigned int r = 255;
+unsigned int g = 0;
+unsigned int b = 255;
+unsigned int counter = 0;
+int pressed = 0;
+
+void herunterfahren(void)
 {
  if(digitalRead(AUS_TASTER) == 0)
 {
