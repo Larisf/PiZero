@@ -7,7 +7,6 @@
 #include "wiringPi.h"
 #include "wiringPiSPI.h"
 
-
 #define N_LEDS 8
 #define BITS_LED N_LEDS*3
 #define TASTER 4
