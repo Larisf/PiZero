@@ -1,28 +1,34 @@
 #include "led.h"
 
-unsigned int r = 255;
-unsigned int g = 0;
-unsigned int b = 255;
+unsigned int r;
+unsigned int g;
+unsigned int b;
 
+void farben(red,green,blue)
+{
+    r = red;
+    g = green;
+    b = blue;
+}
 void lauflicht(char *buffer, int size)
 {
-   int x,y;
-      for(x=0; x < size;x+=3)
+   int i;
+      for(i=0; i < size;i+=3)
       {
-        buffer[x] = 255;
-        buffer[x+1] = 0;
-        buffer[x+2] = 255;
+        buffer[i] = 255;
+        buffer[i+1] = 0;
+        buffer[i+2] = 255;
         wiringPiSPIDataRW(1, buffer, size);
         usleep(WAIT);
         if(counter != 0)
         break;
       }
 
-      for(y = size; y >= 0; y-=3)
+      for(i = size; i >= 0; i-=3)
       {
-        buffer[y] = 255;
-        buffer[y+1] = 0;
-        buffer[y+2] = 255;
+        buffer[i] = 255;
+        buffer[i+1] = 0;
+        buffer[i+2] = 255;
         wiringPiSPIDataRW(1, buffer, size);
         usleep(WAIT);
         if(counter != 0)

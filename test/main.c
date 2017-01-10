@@ -4,7 +4,7 @@ int main()
 {
    char buffer[BITS_LED] = {0};
    signal(SIGINT, abbruch);
-
+   farben(255,0,255);
    wiringPiSetupGpio();
    piHiPri(99);
    pinMode(TASTER,INPUT);
