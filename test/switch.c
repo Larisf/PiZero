@@ -1,8 +1,6 @@
 #include "switch.h"
 
-unsigned int r = 255;
-unsigned int g = 0;
-unsigned int b = 255;
+
 unsigned int counter = 0;
 int pressed = 0;
 

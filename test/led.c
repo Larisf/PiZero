@@ -1,5 +1,9 @@
 #include "led.h"
 
+unsigned int r = 255;
+unsigned int g = 0;
+unsigned int b = 255;
+
 void lauflicht(char *buffer, int size)
 {
    int x,y;
