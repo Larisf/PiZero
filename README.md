@@ -2,5 +2,5 @@
 Farbeinstellung
 Dimmbar
 Bluetooth Kopplung und App kommen
-Arduiono Port wird umgesetzt
+Arduino Port wird umgesetzt
 
