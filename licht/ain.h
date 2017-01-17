@@ -10,5 +10,6 @@
 int ain0();
 int ain1();
 int ain2();
+int ain3();
 
 #endif

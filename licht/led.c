@@ -1,14 +1,14 @@
 //Farbcodes: https://www.mediaevent.de/tutorial/farbcodes.html
 #include "led.h"
-
 void lauflicht(char *buffer, int size)
 {
-   int i;
+   int i, dimm;
+   dimm = 0;
       for(i=0; i < size;i+=3)
       {
-        buffer[i] = 255;
+        buffer[i] = 255-dimm;
         buffer[i+1] = 0;
-        buffer[i+2] = 255;
+        buffer[i+2] = 255-dimm;
         wiringPiSPIDataRW(1, buffer, size);
         usleep(WAIT);
         if(counter != 0)
@@ -17,9 +17,9 @@ void lauflicht(char *buffer, int size)
 
       for(i = size; i >= 0; i-=3)
       {
-        buffer[i] = 255;
+        buffer[i] = 255-dimm;
         buffer[i+1] = 0;
-        buffer[i+2] = 255;
+        buffer[i+2] = 255-dimm;
         wiringPiSPIDataRW(1, buffer, size);
         usleep(WAIT);
         if(counter != 0)
@@ -28,31 +28,31 @@ void lauflicht(char *buffer, int size)
 }
 void geschaltet(char *buffer, int size)
 {
-int i,r,g,b;
-         
+int i,r,g,b, dimm;
+dimm = 0;
          switch(counter)
       {
       case 1: //Rot
        memset(buffer, 0, size);
        for (i = 0; i < size; i+=3)
-       buffer[i] = 255;
+       buffer[i] = 255-dimm;
 
        break;
 
       case 2: //Grün
        memset(buffer, 0, size);
        for (i = 1; i < size; i+=3)
-       buffer[i] = 255;
+       buffer[i] = 255-dimm;
        break;
 
       case 3: //Blau
        memset(buffer, 0, size);
        for (i = 2; i < size; i+=3)
-       buffer[i] = 255;
+       buffer[i] = 255-dimm;
        break;
 
       case 4: //weiß
-       memset(buffer, 255, size);
+       memset(buffer, 255-dimm, size);
        break;
 
       case 5: //Einstellbar
@@ -62,9 +62,9 @@ int i,r,g,b;
        memset(buffer, 0, size);
        for (i = 0; i < size; i+=3)
         {
-          buffer[i] = r;
-          buffer[i+1] = g;
-          buffer[i+2] = b;
+          buffer[i] = r-dimm;
+          buffer[i+1] = g-dimm;
+          buffer[i+2] = b-dimm;
         }
        break;
 

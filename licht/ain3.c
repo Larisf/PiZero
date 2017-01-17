@@ -22,7 +22,7 @@
 
 #include <stdio.h>
 
-int ain2() {
+int ain3() {
   int ADS_address = 0x48;   // I2C Bus Adresse --> i2cdetect -y 1
   int I2CFile;
   
@@ -37,7 +37,7 @@ int ain2() {
       
   // These three bytes are written to the ADS1115 to set the config register and start a conversion 
   writeBuf[0] = 1;          // This sets the pointer register so that the following two bytes write to the config register
-  writeBuf[1] = 0b11100011;       // This sets the 8 MSBs of the config register (bits 15-8) to 11000011
+  writeBuf[1] = 0b11110011;       // This sets the 8 MSBs of the config register (bits 15-8) to 11000011
   writeBuf[2] = 0b00000011;       // This sets the 8 LSBs of the config register (bits 7-0) to 00000011
   
   // Initialize the buffer used to read data from the ADS1115 to 0

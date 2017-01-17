@@ -2,8 +2,11 @@
 //
 //15 - 1 - Start Conversion
 //
-//14:12 - 100 - Singled-ended input AIN0
-//
+//14:12 - xxx - Singled-ended input
+//  ain0: 100
+//  ain1: 101
+//  ain2: 110
+//  ain3: 111
 //11:9 - 001 - FS 4.096 to cover the +3.3 supply voltage
 //
 //8 - 1 - No continuous conversion
