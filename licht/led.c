@@ -3,7 +3,7 @@
 void lauflicht(char *buffer, int size)
 {
    int i, dimm;
-   dimm = 0;
+   dimm = ain3();
       for(i=0; i < size;i+=3)
       {
         buffer[i] = 255-dimm;
@@ -29,7 +29,7 @@ void lauflicht(char *buffer, int size)
 void geschaltet(char *buffer, int size)
 {
 int i,r,g,b, dimm;
-dimm = 0;
+dimm = ain3();
          switch(counter)
       {
       case 1: //Rot
@@ -58,7 +58,7 @@ dimm = 0;
       case 5: //Einstellbar
        r = ain0();
        g = ain1();
-       b = ain2();    
+       b = ain2();
        memset(buffer, 0, size);
        for (i = 0; i < size; i+=3)
         {
