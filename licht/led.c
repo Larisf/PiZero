@@ -62,9 +62,9 @@ dimm = ain3();
        memset(buffer, 0, size);
        for (i = 0; i < size; i+=3)
         {
-          buffer[i] = r-dimm;
-          buffer[i+1] = g-dimm;
-          buffer[i+2] = b-dimm;
+          buffer[i] = r;
+          buffer[i+1] = g;
+          buffer[i+2] = b;
         }
        break;
 
